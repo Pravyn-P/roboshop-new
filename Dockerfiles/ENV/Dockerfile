@@ -1,0 +1,4 @@
+FROM almalinux
+ENV AUTHOR="PRAVEEN"\
+    COURSE="DOCKER"\
+    DURATION="25"
