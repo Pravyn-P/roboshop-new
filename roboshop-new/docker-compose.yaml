@@ -10,29 +10,19 @@ services:
     - catalogue
     ports: 
     - "80:80"
-    networks:
-      - roboshop
   mongodb:
     image: mongodb:v1
     container_name: mongodb
-    networks:
-      - roboshop
   catalogue:
     image: catalogue:v1
     container_name: catalogue
     depends_on:
     - mongodb
-    networks:
-      - roboshop
   redis:
     image: redis
-    networks:
-      - roboshop
   user:
     image: user:v1
     container_name: user
     depends_on:
     - mongodb
     - redis
-    networks:
-      - roboshop
