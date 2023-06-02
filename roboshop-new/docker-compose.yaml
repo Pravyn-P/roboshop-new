@@ -11,7 +11,7 @@ services:
     ports: 
     - "80:80"
   mongodb:
-    image: mongo:v1
+    image: mongodb:v1
     container_name: mongodb
   catalogue:
     image: catalogue:v1
