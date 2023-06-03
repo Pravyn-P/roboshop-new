@@ -13,6 +13,7 @@ services:
     - mysql
     - shipping
     - payment
+    - ratings
     ports: 
     - "80:80"
   mongodb:
@@ -52,6 +53,11 @@ services:
     container_name: payment
     depends_on:
     - rabbitmq
+  ratings:
+    image: ratings:v1
+    container_name: ratings
+    depends_on:
+    - mysql
 
 
 
