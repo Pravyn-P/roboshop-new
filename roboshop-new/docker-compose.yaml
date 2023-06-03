@@ -12,6 +12,7 @@ services:
     - cart
     - mysql
     - shipping
+    - payment
     ports: 
     - "80:80"
   mongodb:
