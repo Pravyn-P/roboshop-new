@@ -3,45 +3,44 @@ networks:
   roboshop:
     driver: bridge
 volumes:
-# This is equivalent to docker volume create <volume name>
+# This is equivalent to docker volume create [volume-name]. these are named volumes
   mysql:
     driver: local
     driver_opts:
       o: bind
       type: none
-      device: home/ec2-user/mysql
+      device: /home/ec2-user/mysql
   redis:
     driver: local
-    driver_opts: 
+    driver_opts:
       o: bind
       type: none
-      device: home/ec2-user/redis
+      device: /home/ec2-user/redis
   rabbitmq:
     driver: local
     driver_opts:
       o: bind
       type: none
-      device: home/ec2-user/rabbitmq
+      device: /home/ec2-user/rabbitmq
   mongodb:
     driver: local
     driver_opts:
       o: bind
       type: none
-      device: home/ec2-user/mongodb
+      device: /home/ec2-user/mongodb
+
 services:
   web:
     image: web:v1
     container_name: web
-    depends_on: 
+    ports:
+    - "80:80"
+    depends_on:
     - catalogue
     - user
     - cart
     - mysql
     - shipping
-    - payment
-    - ratings
-    ports: 
-    - "80:80"
   mongodb:
     image: mongodb:v1
     container_name: mongodb
@@ -99,49 +98,51 @@ services:
 
 
 
+
 # version: "3.9"
 # networks:
 #   roboshop:
 #     driver: bridge
 # volumes:
-# # This is equivalent to docker volume create [volume-name]. these are named volumes
+# # This is equivalent to docker volume create <volume name>
 #   mysql:
 #     driver: local
 #     driver_opts:
 #       o: bind
 #       type: none
-#       device: /home/ec2-user/mysql
+#       device: home/ec2-user/mysql
 #   redis:
 #     driver: local
-#     driver_opts:
+#     driver_opts: 
 #       o: bind
 #       type: none
-#       device: /home/ec2-user/redis
+#       device: home/ec2-user/redis
 #   rabbitmq:
 #     driver: local
 #     driver_opts:
 #       o: bind
 #       type: none
-#       device: /home/ec2-user/rabbitmq
+#       device: home/ec2-user/rabbitmq
 #   mongodb:
 #     driver: local
 #     driver_opts:
 #       o: bind
 #       type: none
-#       device: /home/ec2-user/mongodb
-
+#       device: home/ec2-user/mongodb
 # services:
 #   web:
 #     image: web:v1
 #     container_name: web
-#     ports:
-#     - "80:80"
-#     depends_on:
+#     depends_on: 
 #     - catalogue
 #     - user
 #     - cart
 #     - mysql
 #     - shipping
+#     - payment
+#     - ratings
+#     ports: 
+#     - "80:80"
 #   mongodb:
 #     image: mongodb:v1
 #     container_name: mongodb
@@ -194,4 +195,3 @@ services:
 #     container_name: ratings
 #     depends_on:
 #     - mysql
-
