@@ -43,7 +43,7 @@ services:
     ports: 
     - "80:80"
   mongodb:
-    image: mongodb:v1
+    image: mongo:v1
     container_name: mongodb
     volumes:
     - mongodb:/data/db
