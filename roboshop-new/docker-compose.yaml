@@ -6,7 +6,7 @@ volumes:
 # This is equivalent to docker volume create <volume name>
   mysql:
     driver: local
-    drive_opts:
+    driver_opts:
       o: bind
       type: none
       device: home/ec2-user/mysql
