@@ -1,0 +1,2 @@
+### STOPSIGNAL
+When a user stops the container by using 'docker stop' command, Docker sends a SIGTERM signal to container, which is then caught by the STOPSIGNAL instruction, allowing nginx to gracefully shutdown. 
