@@ -28,7 +28,7 @@ volumes:
       o: bind
       type: none
       device: /home/ec2-user/mongodb
-services:
+oxc services:
   web:
     image: web:v1
     container_name: web
